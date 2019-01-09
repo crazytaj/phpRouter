@@ -1,6 +1,6 @@
 # phpRouter
 simple page router built in php
 # Known Bugs
-the 404 error page does not work on the main page
+None! If you find any bugs, report it ![here](https://github.com/crazytaj/phpRouter)
 # Setup
 fill in the setup.ini file
