@@ -14,4 +14,10 @@ class Index extends Controller {
 
     }
 
+    public function e404() {
+
+        $this->view->e404();
+
+    }
+
 }
