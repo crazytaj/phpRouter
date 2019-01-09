@@ -8,9 +8,9 @@ class Index extends Controller {
     }
 
     function build() {
-        $this->view->render('index');
         require_once './Models/index_model.php';
         $model = new Index_Model;
+        $this->view->render('./Views/index');
 
     }
 

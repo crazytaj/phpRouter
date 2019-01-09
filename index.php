@@ -1,4 +1,7 @@
 <?php
+if (!isset($_SESSION)) {
+    session_start();
+}
 $inifile = parse_ini_file('setup.ini');
 foreach ($inifile as $key => $ind) {
     define('__'.$key, $ind);
@@ -24,16 +27,27 @@ if ($_GET['url'] == 'index.php') $url = ['index'];
 else $url = explode ('/', rtrim($_GET['url'], '/'));
 $length = sizeof($url);
 $params = $url;
-$param = NULL;
-for ($i = $length - 1; $i > 1; $i = $i - 1) {
-    $param .= $params[$i] . ',';
-}
-$param = rtrim($param, ',');
-if ($param == '') {
-    $param = NULL;
+unset($params[1]);
+unset($params[0]);
+if (sizeof($params) == 0) {
+    $params = NULL;
+} else {
+    foreach($params as $key => $ind) {
+        unset($params[$key]);
+        $params[$key - 2] = $ind;
+    }
 }
 $controller = new $url[0] or die();
-if (isset($url[1]) && $param !== NULL && method_exists($controller, $url[1])) {$controller->{$url[1]}($param);}
-elseif (isset($url[1]) && method_exists($controller, $url[1])) $controller->{$url[1]}();
-//elseif (method_exists($controller, 'e404')) $controller->e404();
-else $controller->build();
+if (isset($url[1]) && $params !== NULL && method_exists($controller, $url[1])) {
+    //var_dump($params);
+    $controller->{$url[1]}($params);
+}
+elseif (isset($url[1]) && method_exists($controller, $url[1])) {
+    $controller->{$url[1]}();
+}
+elseif (method_exists($controller, 'build')) {
+    $controller->build();
+}
+elseif (method_exists($controller, 'e404')) {
+    $controller->e404();
+}
