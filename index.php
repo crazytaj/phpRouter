@@ -35,5 +35,5 @@ if ($param == '') {
 $controller = new $url[0] or die();
 if (isset($url[1]) && $param !== NULL && method_exists($controller, $url[1])) {$controller->{$url[1]}($param);}
 elseif (isset($url[1]) && method_exists($controller, $url[1])) $controller->{$url[1]}();
-elseif (method_exists($controller, 'e404')) $controller->e404();
+//elseif (method_exists($controller, 'e404')) $controller->e404();
 else $controller->build();
