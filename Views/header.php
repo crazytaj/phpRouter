@@ -7,10 +7,10 @@ if (!isset($_SESSION)){
 <html>
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="./Library/CSS/bootstrap.min.css">
-        <script src="./Library/CSS/jquery-3.3.1.slim.min.js"></script>
-        <script src="./Library/CSS/popper-1-14-3.min.js"></script>
-        <script src="./Library/CSS/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="<?php echo __URL?>/Library/CSS/bootstrap.min.css">
+        <script src="<?php echo __URL?>/Library/JavaScript/jquery-3.3.1.slim.min.js"></script>
+        <script src="<?php echo __URL?>/Library/JavaScript/popper-1-14-3.min.js"></script>
+        <script src="<?php echo __URL?>/Library/JavaScript/bootstrap.min.js"></script>
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
