@@ -32,6 +32,15 @@ class View {
             require_once $path.'.php';
 
         }
+        if ($vartopass !== NULL) {
+            if (is_array($vartopass)) {
+                foreach ($vartopass as $key => $ind) {
+                    unset($_SESSION[$key]);
+                }
+            } else {
+                die('passed variable is not an array');
+            }
+        }
 
     }
 
@@ -40,6 +49,20 @@ class View {
         require_once './Library/dbconnect.php';
         require_once './Views/header.php';
         require_once './Views/404.php';
+        require_once './Views/footer.php';
+
+    }
+
+    public function e4041($message) {
+
+        require_once './Library/dbconnect.php';
+        require_once './Views/header.php';
+        ?>
+            <div class="container container-fluid text-center">
+                <br><br><br><br>
+                <h1 style="color:red"><strong><?php echo $message?></strong></h1>
+            </div>
+        <?php
         require_once './Views/footer.php';
 
     }
